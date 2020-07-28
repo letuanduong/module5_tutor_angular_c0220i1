@@ -1,0 +1,35 @@
+<div>
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-4">
+        {{ title_page }}
+      </div>
+      <div class="col-md-8">
+        <input type="text" (keyup)="search($event)">
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-blue">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of userFilter, let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="delete(user.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
