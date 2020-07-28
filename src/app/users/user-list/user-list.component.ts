@@ -8,43 +8,47 @@ import {IUser} from "../iuser";
 })
 export class UserListComponent implements OnInit {
 
-  users: IUser[] =  [
-    {
-      id: 1,
-      name: 'tuan',
-      email: 'tuan@gmail',
-    },
-    {
-      id: 2,
-      name: 'le',
-      email: 'le@gmail',
-    },
-    {
-      id: 3,
-      name: 'manh',
-      email: 'manh@gmail',
-    }
-  ];
+  title = 'Angular OverView'
+  users: IUser[] = [];
 
-  title_page = 'ANGULAR OVERVIEW';
-
-  userFilter = [];
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.userFilter = this.users;
+    // this.userFilter = this.users;
+    this.users = this.getUserList();
+  }
+
+  getUserList(): IUser[] {
+    const users = [
+      {
+        id: 1,
+        name: 'duc',
+        email: 'duc@gmail.com'
+      },
+      {
+        id: 2,
+        name: 'vinh',
+        email: 'vinh@gmail.com'
+      },
+      {
+        id: 3,
+        name: 'tuan',
+        email: 'tuan@gmail.com'
+      }
+    ];
+    return users;
   }
 
   search(event) {
-    let keyword = event.target.value;
-    this.userFilter = (keyword) ? this.filterByKeyWord(keyword) : this.users;
+    let keyword = event;
+    this.users = (keyword) ? this.filterByKeyword(keyword) : this.getUserList();
   }
 
-  filterByKeyWord(keyWord){
+  filterByKeyword(keyword) {
     return this.users.filter(user => {
-      return user.name.indexOf(keyWord) != -1;
-    })
+      return user.name.indexOf(keyword) != -1;
+    });
   }
 
   delete(id) {
@@ -56,5 +60,4 @@ export class UserListComponent implements OnInit {
     });
     this.users = userDeleted;
   }
-
 }

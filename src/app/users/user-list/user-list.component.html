@@ -1,12 +1,12 @@
 <div>
-
   <div class="card-header">
     <div class="row">
       <div class="col-md-4">
-        {{ title_page }}
+<!--        {{ title }}-->
       </div>
       <div class="col-md-8">
-        <input type="text" (keyup)="search($event)">
+<!--        <input type="text" (keyup)="search($event)">-->
+        <app-input-search (keyWord)="search($event)" message="textInput"></app-input-search>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of userFilter, let i = index">
+    <tr *ngFor="let user of users, let i = index">
       <th scope="row">{{i + 1}}</th>
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
