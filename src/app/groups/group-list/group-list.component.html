@@ -1,2 +1,30 @@
-<app-input-search (keyWord)="getInput($event)"></app-input-search>
-{{keyword}}
+<div>
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <app-input-search (keyWord)="search($event)" message="Search"></app-input-search>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-blue">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let group of groups, let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{group.name}}</td>
+      <td>{{group.description}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
